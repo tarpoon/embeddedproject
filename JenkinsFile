@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    stages {
+        stage('Preparation') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/tarpoon/embeddedproject.git']]])
+            }
+        }
+        stage('Build') {
+            steps {
+                sh "make clean"
+                sh "make all"
+            }
+        }
+        stage('Test') {
+            steps {
+                sh "make test"
+            }
+        }
+        stage('Results') {
+            steps {
+                junit 'out/bin/results_junit.xml'
+            }
+        }
+    }
+}
