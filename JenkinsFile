@@ -3,9 +3,7 @@ pipeline {
     stages {
         stage('Preparation') {
             steps {
-                //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/tarpoon/embeddedproject.git']]])
-                git clone 'https://github.com/tarpoon/embeddedproject.git'
-
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/tarpoon/embeddedproject.git']]])
             }
         }
         stage('Build') {
