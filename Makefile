@@ -21,7 +21,7 @@ EXEC_FILE       := $(OUTPUT_DIR)/bin/$(EXEC_NAME)
 FLAGS           := -std=c++11 $(WARNINGS)
 CXXFLAGS        := $(FLAGS)
 LDFLAGS         := $(FLAGS)
-INC             := -I $(PROJECT_DIR)/inc -I build/resolvedDep/tandk/inc/
+INC             := -I $(PROJECT_DIR)/inc -I build/resolvedDep/to/inc/
 SRC             := $(wildcard $(PROJECT_DIR)/src/*.cc)
 OBJ             := $(SRC:$(PROJECT_DIR)/src/%.cc=$(OUTPUT_DIR)/obj/%.o)
 
@@ -50,7 +50,7 @@ main: $(EXEC_FILE)
 $(EXEC_FILE): $(OBJ)
 	@$(DIR_GUARD)
 	#@$(LD) $(LDFLAGS) $^ -o $@ && echo "[OK]: $@"
-	@$(LD) $(LDFLAGS) $^ -Wl, -L out/obj/mathy.o $@ && echo "[OK]: $@"
+	@$(LD) $(LDFLAGS) $^ -Wl,-Bstatic -Wl,-L build/resolvedDep/to/lib -lmathy $@ && echo "[OK]: $@"
 	@$@
 
 #static_library: $(OUTPUT_DIR)/lib/libmathy.a
@@ -72,7 +72,7 @@ test_exe: $(TEST_EXEC_FILE)
 $(TEST_EXEC_FILE): $(OBJ_TEST)
 	@$(DIR_GUARD)
 	#@$(LD) $(LDFLAGS_TEST) $^ -o $@ && echo "[OK]: $@"
-	@$(LD) $(LDFLAGS_TEST) $^ -Wl, -L out/obj/mathy.o $@ && echo "[OK]: $@"
+	@$(LD) $(LDFLAGS_TEST) $^ -Wl,-Bstatic -Wl,-L build/resolvedDep/to/lib -lmathy $@ && echo "[OK]: $@"
 	@$@
 
 $(OUTPUT_DIR)/obj/%.o: $(PROJECT_DIR)/src/%.cc
