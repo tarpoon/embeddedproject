@@ -6,7 +6,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh "make clean"
-                sh "make all"
+                sh "gradlew publishToMavenLocal"
             }
         }
         stage('Results') {
