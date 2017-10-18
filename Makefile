@@ -50,7 +50,7 @@ main: $(EXEC_FILE)
 $(EXEC_FILE): $(OBJ)
 	@$(DIR_GUARD)
 	#@$(LD) $(LDFLAGS) $^ -o $@ && echo "[OK]: $@"
-	$(LD) $(LDFLAGS) $^ -Wl,-Bstatic -Wl,-L build/resolvedDep/to/lib -lmathy $@ && echo "[OK]: $@"
+	$(LD) $(LDFLAGS) $^ -Wl,-Bstatic -Wl,-L build/resolvedDep/to/lib -lmathy -o $@ && echo "[OK]: $@"
 	@$@
 
 #static_library: $(OUTPUT_DIR)/lib/libmathy.a
@@ -72,7 +72,7 @@ test_exe: $(TEST_EXEC_FILE)
 $(TEST_EXEC_FILE): $(OBJ_TEST)
 	@$(DIR_GUARD)
 	#@$(LD) $(LDFLAGS_TEST) $^ -o $@ && echo "[OK]: $@"
-	$(LD) $(LDFLAGS_TEST) $^ -Wl,-Bstatic -Wl,-L build/resolvedDep/to/lib -lmathy $@ && echo "[OK]: $@"
+	$(LD) $(LDFLAGS_TEST) $^ -Wl,-Bstatic -Wl,-L build/resolvedDep/to/lib -lmathy -o $@ && echo "[OK]: $@"
 	@$@
 
 $(OUTPUT_DIR)/obj/%.o: $(PROJECT_DIR)/src/%.cc
