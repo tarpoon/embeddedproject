@@ -49,7 +49,8 @@ all: main test_exe
 main: $(EXEC_FILE)
 $(EXEC_FILE): $(OBJ)
 	@$(DIR_GUARD)
-	@$(LD) $(LDFLAGS) $^ -o $@ && echo "[OK]: $@"
+	#@$(LD) $(LDFLAGS) $^ -o $@ && echo "[OK]: $@"
+	@$(LD) $(LDFLAGS) $^ -Wl, -L out/obj/mathy.o $@ && echo "[OK]: $@"
 	@$@
 
 #static_library: $(OUTPUT_DIR)/lib/libmathy.a
