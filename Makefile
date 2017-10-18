@@ -71,7 +71,8 @@ test: test_exe
 test_exe: $(TEST_EXEC_FILE)
 $(TEST_EXEC_FILE): $(OBJ_TEST)
 	@$(DIR_GUARD)
-	@$(LD) $(LDFLAGS_TEST) $^ -o $@ && echo "[OK]: $@"
+	#@$(LD) $(LDFLAGS_TEST) $^ -o $@ && echo "[OK]: $@"
+	@$(LD) $(LDFLAGS_TEST) $^ -Wl, -L out/obj/mathy.o $@ && echo "[OK]: $@"
 	@$@
 
 $(OUTPUT_DIR)/obj/%.o: $(PROJECT_DIR)/src/%.cc
