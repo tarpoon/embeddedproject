@@ -6,6 +6,11 @@ pipeline {
         }
     }
     stages {
+        stage {
+            steps {
+                sh "./gradlew bumpPatch"
+            }
+        }
         stage('Build') {
             steps {
                 sh "./gradlew publish"
