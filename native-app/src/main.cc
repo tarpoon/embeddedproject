@@ -17,9 +17,9 @@ int main(const int argc, const char *argv[])
       }
     }
 
-   printf("VERSION_STRING=%s\n", VERSION_STRING);
-   printf("BUILD_STRING=%s\n", BUILD_STRING);
-   printf("PRODUCT_STRING=%s\n", PRODUCT_STRING);
+   //printf("VERSION_STRING=%s\n", VERSION_STRING);
+   //printf("BUILD_STRING=%s\n", BUILD_STRING);
+   //printf("PRODUCT_STRING=%s\n", PRODUCT_STRING);
 
     return 0;
 }
