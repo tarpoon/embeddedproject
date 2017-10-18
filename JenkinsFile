@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Increment version') {
             steps {
-                sh "./gradlew bumpPatch"
+                sh "./gradlew incrementVersion"
             }
         }
         stage('Build') {
