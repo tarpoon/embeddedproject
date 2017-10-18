@@ -51,15 +51,15 @@ $(EXEC_FILE): $(OBJ)
 	@$(LD) $(LDFLAGS) $^ -o $@ && echo "[OK]: $@"
 	@$@
 
-static_library: $(OUTPUT_DIR)/lib/libmathy.a
-$(OUTPUT_DIR)/lib/libmathy.a: $(OUTPUT_DIR)/obj/mathy.o
-	@$(DIR_GUARD)
-	@$(AR) $(ARFLAGS) $@ $^ && echo "[OK]: $@"
+#static_library: $(OUTPUT_DIR)/lib/libmathy.a
+#$(OUTPUT_DIR)/lib/libmathy.a: $(OUTPUT_DIR)/obj/mathy.o
+#	@$(DIR_GUARD)
+#	@$(AR) $(ARFLAGS) $@ $^ && echo "[OK]: $@"
 
-shared_library: $(OUTPUT_DIR)/lib/libmathy.so
-$(OUTPUT_DIR)/lib/libmathy.so: $(OUTPUT_DIR)/obj/mathy.o
-	@$(DIR_GUARD)
-	@$(CXX) $(LDFLAGS) -shared -o $@ $^ && echo "[OK]: $@"
+#shared_library: $(OUTPUT_DIR)/lib/libmathy.so
+#$(OUTPUT_DIR)/lib/libmathy.so: $(OUTPUT_DIR)/obj/mathy.o
+#	@$(DIR_GUARD)
+#	@$(CXX) $(LDFLAGS) -shared -o $@ $^ && echo "[OK]: $@"
 
 .PHONY: test
 test: test_exe
