@@ -1,5 +1,5 @@
 // Generated Wed Oct 18 11:58:00 UTC 2017
-
+/*
 #ifndef _VERSION_H_
 #define _VERSION_H_
 
@@ -28,3 +28,4 @@ int main()
 }
 #endif //GENERATE_MAIN
 #endif //_VERSION_H_
+*/
