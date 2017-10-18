@@ -21,7 +21,7 @@ EXEC_FILE       := $(OUTPUT_DIR)/bin/$(EXEC_NAME)
 FLAGS           := -std=c++11 $(WARNINGS)
 CXXFLAGS        := $(FLAGS)
 LDFLAGS         := $(FLAGS)
-INC             := -I $(PROJECT_DIR)/inc
+INC             := -I $(PROJECT_DIR)/inc -I build/resolvedDep/tandk/inc/
 SRC             := $(wildcard $(PROJECT_DIR)/src/*.cc)
 OBJ             := $(SRC:$(PROJECT_DIR)/src/%.cc=$(OUTPUT_DIR)/obj/%.o)
 
