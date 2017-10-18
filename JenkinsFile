@@ -1,21 +1,25 @@
 pipeline {
-    agent any
+    agent {
+        docker { 
+            image 'praqma/native-gradle'
+            args '-v $HOME/.m2:/home/jenkins/.m2 -v $HOME/.gradle:/home/jenkins/.gradle'
+        }
+    }
     stages {
-        stage('Build') {
+        stage('Increment version') {
             steps {
-                sh "make clean"
-                sh "make all"
+                sh "./gradlew incrementVersion"
             }
         }
-        stage('Test') {
+        stage('Build') {
             steps {
-                sh "make test"
+                sh "./gradlew publish"
             }
         }
         stage('Results') {
             steps {
                 junit 'out/bin/results_junit.xml'
-                archiveArtifacts 'out/bin/main'
+                archiveArtifacts 'build/distributions/*.zip'
             }
         }
     }
