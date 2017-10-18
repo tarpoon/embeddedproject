@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'tarpoon/nativebuild:latest' }
+        docker { image 'tarpoon/native-make:1.0' }
     }
     stages {
         stage('Build') {
