@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "mathy.h"
+#include <mathy.h>
 
 #include "version.h"
 
